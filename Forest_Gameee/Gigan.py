@@ -10,5 +10,5 @@ class Gigantic_tree(Scene.Scene_):
         self.left = "death"
         self.down = "nothing"
 
-    def enter(pass):
+    def enter(self):
         pass
