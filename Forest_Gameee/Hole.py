@@ -10,5 +10,5 @@ class Hole_(Scene.Scene_):
         self.left = "nothing"
         self.down = "nothing"
 
-    def enter(pass):
+    def enter(self):
         pass
