@@ -12,13 +12,13 @@ Functionalities that I was able to successfully execute:
 (1) Move between rooms infinitely without having the program crash
 (2) Have a 'runner' class in a separate file that runs all of the scenes
 (3) Having a parent Scene class and individual scene subclasses that inherited traits from
-the parent class using the super function both to access the attributes (.__init__()) and the parent class functions. 
-(4) Having a general prompt class that includes prompts for certain classes by using if statements.
-(5) Having the subclasses being in separate files.
+the parent class using the super function both to access the attributes (.__init__()) and the parent class methods. 
+(4) Having a general prompt method in the Scene class that includes prompts for certain subclasses by using if statements.
+(5) Having each subclass in a separate file.
 (6) Having a character class that includes an inventory that can be accessed at any point
 in the game.
-(7) Giving the character a health variable that can be lowered or increased due to 
-circumstances in the game.
+(7) Giving the character a health attribute that can be lowered or increased due to 
+circumstances in the game. The character will die if his health is <= 0. 
 (8) Giving the character an inventory that can be added to and recognized by the classes.
 (9) I was able to import files from one folder into the folder where my runner class was
 and where the directory for my terminal was as well. 
