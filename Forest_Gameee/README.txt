@@ -59,3 +59,10 @@ import sys
 sys.path.insert(0, '/Users/Homefolder/Python1/Forest_Gameee') 
 
 If you are using this set of modules/classes on your computer, please update the pathway names accordingly. Thank you! 
+
+
+---- notes after I went public ----
+
+I included the underscore on class names when I was worried a particular method of
+that class was going to be the exact name (despite case) to avoid confusion. 
+

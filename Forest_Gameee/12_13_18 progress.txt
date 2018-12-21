@@ -25,20 +25,20 @@ but I need that value to stay constant over classes... how can I do this?
 (1) I still want to create a return function... maybe in scene??? or maybe in thorn idk...
 
 12.16.18
-(1) YAY, I figured out how to add scene specific actions to the prompt in the Scene (parent) 
+(1) YAY, I figured out how to add scene specific actions to the prompt in the Scene (parent)
 class! woohoo! so in the elif statement, you put the words that lead to the action and then
-you also write 'and self.name == "name of room"'. So cool! 
+you also write 'and self.name == "name of room"'. So cool!
 (2) when you have a long list for an elif statement, and you are joining it with an and keyword
 make sure that you have the ending bracket and and on the same line! (LOOK AT PEP8)
-(3) accidentally found a bug, I cannot go back into Thorny patch after returning from it (Edge).... or go into the Pile scene... 
+(3) accidentally found a bug, I cannot go back into Thorny patch after returning from it (Edge).... or go into the Pile scene...
 (4) still working on number 3, maybe using while loops in the runner?
 
 12.17.18
 (1) ok since I found that bug, I've just been working on trying to make a Runner class
 that actually allows me to enter and leave any room as many times as I want.
 What I realized is that instead of using if loops, it's better to use while loops b/c they
-obviously can run more than once (although I probably could have figured it out with 
-for loops as well). 
+obviously can run more than once (although I probably could have figured it out with
+for loops as well).
 Anyways... The way I fixed it was by ..
 1. having one "start" function that initiates edge
 2. establishing a class variable called location that is set equal to the self.name of
@@ -47,16 +47,52 @@ each scene
 location is == to the self.name string.
 3. splitting up the entrances into the other rooms into separate functions (into_x)
 4. from the move function of each scene, having a statement that says if x.right == 'str'
-then go into the entrance function. if there are multiple rooms having an elif with the same thing for a different room. 
+then go into the entrance function. if there are multiple rooms having an elif with the same thing for a different room.
 5. In each the into_x functions, instantiating the class, by accessing it from the dict using the string of its name. [access the value with dictionary.get('str')
 6. including the conditional (on name) while loops there as well, and making sure that
-they ended by going into a specific scene. 
-(2) we also cleaned up the enter and examine functions (and enter again) on our scenes 
+they ended by going into a specific scene.
+(2) we also cleaned up the enter and examine functions (and enter again) on our scenes
 by including if statements in the Scene parent class enter function! yay!
 an important thing to note is that even if in the parent class
 if you use a self.examine (referring to an attribute) it will refer to the subclass that
 you're in! wooo! wait.... no I was wrong... if you are referring to an attribute...
-maybe I just did it wrong... ok next bug! lol. 
+maybe I just did it wrong... ok next bug! lol.
 
 
+12.18.18
+(1) I just let Catherine play for a second, and she selected crawl from the main prompt
+when she wasn't in Thorn and it caused the system to crash... how can I fix that?
+Ok I need to provide a route for the program to go when someone inputs a scene
+specific command and it doesn't go where I want it to.
+Now that I'm doing that I'm realizing that is going to grow my code a lot...
+so maybe I can use try-except to minimize the amount of code I need to copy and paste?
+Ok a quick fix for now (which I may have to update later) is just including an else clause
+at the end of all of the elif statements that leads to a function that prints an error message to the user
+and then resets the prompt method.
 
+(2)
+
+12.20.18
+(1) I wanted to make either an if statement or while loop that would
+allow the sticks, steel, and flint items to be combined into a torch
+once all three items were collected by the player
+I did so in the get_inven() function of charac_fg b/c I always call this after
+a new item is picked up! I used a code snippet I found from a forum...
+the snippet tests if multiple values are within a list, and if they are, it
+produces a value of True.
+e.g.
+while all(x in Character_.inven for x in ['sticks','flint','steel']) == True:
+...
+COOL!
+(2) I set up the user input differenlty in my Scene_.use_item() method
+Where instead of doing the accept_act = [list], then while not in list blah blah.
+I had a while loop that returned an error message while the item selected
+was not in the player's inventory.
+This was fine, but I realized that unless the player selected an item that was
+in the inventory, the player could not exit this loop.
+Therefore I left the while statement as is, but I included another input statement
+in the middle of the while clause, and following it with an *if statement
+that accounted for the entry of ANOTHER user input that wasn't in the inventory
+this time exiting the use_item() method and returning to the scene prompt method.
+I had to do this using return self.prompt() b/c by just putting self.prompt()
+in the if statement, I wasn't returning to the prompt properly. 

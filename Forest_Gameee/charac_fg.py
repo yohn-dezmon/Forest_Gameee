@@ -12,14 +12,24 @@ class Character_(object):
         # self.death = Death_()
 
     def get_hp():
-        print(Character_.health)
+
+        print(f"""
+        CURRENT HP:
+        {Character_.health}
+        """)
 
     def get_inven():
+        while all(x in Character_.inven for x in ['sticks','flint','steel']) == True:
+                print("You've collected the items to create a Torch!")
+                Character_.inven.append('torch')
+                Character_.inven.remove('sticks')
+                Character_.inven.remove('steel')
+                Character_.inven.remove('flint')
+                Character_.get_inven()
+
         print("\nYour current inventory:")
         print("\n".join(Character_.inven))
 
-    def add_inven(item):
-        Character_.inven.append(item)
 
     def decrease_hp():
         Character_.health -= 1

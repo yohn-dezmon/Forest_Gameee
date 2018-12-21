@@ -2,29 +2,24 @@ import Scene
 from charac_fg import Character_
 # from Edge import Edge_
 
-class Pile_O_Dung(Scene.Scene_):
+class PileDung(Scene.Scene_):
 
     def __init__(self):
-        super(Pile_O_Dung, self).__init__()
+        super(PileDung, self).__init__()
         self.charac = Character_()
-        self.input = "input"
-        self.up = "nothing"
-        self.right = "edge"
-        self.left = "nothing"
-        self.down = "nothing"
         self.name = "Pile of Dung"
         self.examine = """
         The tree to the right of the pile of dung seems to be shaking ever so
         slightly...
         """
-        # self.edge = Edge_()
+
 
     def examine_(self):
-        super(Pile_O_Dung, self).examine_()
+        super(PileDung, self).examine_()
 
     def prompt(self):
-        super(Pile_O_Dung, self).prompt()
-    
+        super(PileDung, self).prompt()
+
     def squirrel_tree(self):
         print("""
         aha! It was a squirrel that was shaking the tree.
@@ -41,16 +36,16 @@ class Pile_O_Dung(Scene.Scene_):
         elif squirrel_inp in ['b','b.','B','B.']:
             print("The squirrel jumps down and bites you on the nose!")
             Character_.decrease_hp()
-            Pile_O_Dung.prompt(self)
+            PileDung.prompt(self)
         elif squirrel_inp in ['c','C','C.','c.']:
             print("The squirrel is impressed, he places a fedora on your head!")
-            Character_.inven.append('Fedora')
+            Character_.inven.append('fedora')
             Character_.get_inven()
-            Pile_O_Dung.prompt(self)
+            PileDung.prompt(self)
 
 
     def enter(self):
-        super(Pile_O_Dung, self).enter()
+        super(PileDung, self).enter()
 
 
     def witch(self):
@@ -62,7 +57,7 @@ class Pile_O_Dung(Scene.Scene_):
 
     def move(self):
         self.input = input("Which direction would you like to go? \n")
-        super(Pile_O_Dung, self).move()
+        super(PileDung, self).move()
         if self.input.lower() in ['right', 'east']:
     # work on this still
             self.witch()

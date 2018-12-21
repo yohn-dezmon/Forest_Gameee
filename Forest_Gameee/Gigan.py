@@ -1,9 +1,9 @@
 import Scene
 
-class Gigantic_tree(Scene.Scene_):
+class GiganticTree(Scene.Scene_):
 
     def __init__(self):
-        super(Gigantic_tree, self).__init__()
+        super(GiganticTree, self).__init__()
         self.input = "input"
         self.up = "nothing"
         self.right = "nothing"
